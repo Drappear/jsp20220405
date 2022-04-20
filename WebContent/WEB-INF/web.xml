@@ -26,8 +26,7 @@
   <servlet>
   	<servlet-name>S3Servlet01</servlet-name>
   	<servlet-class>chap17.servlet3.S3Servlet01</servlet-class>
-  </servlet>
-  
+  </servlet>  
   <servlet-mapping>
   	<servlet-name>S3Servlet01</servlet-name>
   	<url-pattern>/s3/servlet01</url-pattern>
@@ -36,8 +35,7 @@
   <servlet>
   	<servlet-name>S3Servlet02</servlet-name>
   	<servlet-class>chap17.servlet3.S3Servlet02</servlet-class>
-  </servlet>
-  
+  </servlet>  
   <servlet-mapping>
   	<servlet-name>S3Servlet02</servlet-name>
   	<url-pattern>/s3/servlet02</url-pattern>
@@ -46,8 +44,7 @@
   <servlet>
   	<servlet-name>S3Servlet03</servlet-name>
   	<servlet-class>chap17.servlet3.S3Servlet03</servlet-class>
-  </servlet>
-  
+  </servlet>  
   <servlet-mapping>
   	<servlet-name>S3Servlet03</servlet-name>
   	<url-pattern>/s3/servlet03</url-pattern>
@@ -57,8 +54,7 @@
   	<servlet-name>S3Servlet04</servlet-name>
   	<servlet-class>chap17.servlet3.S3Servlet04</servlet-class>
   	<load-on-startup>1</load-on-startup>
-  </servlet>
-  
+  </servlet>  
   <servlet-mapping>
   	<servlet-name>S3Servlet04</servlet-name>
   	<url-pattern>/s3/servlet04</url-pattern>
@@ -75,8 +71,7 @@
   		<param-name>dbUrl</param-name>
   		<param-value>awsMariaDbAddress</param-value>
   	</init-param>
-  </servlet>
-  
+  </servlet>  
   <servlet-mapping>
   	<servlet-name>S3Servlet05</servlet-name>
   	<url-pattern>/s3/servlet05</url-pattern>
@@ -89,8 +84,7 @@
   		<param-name>viewName</param-name>
   		<param-value>/WEB-INF/view/chap17/ex06.jsp</param-value>
   	</init-param>
-  </servlet>
-  
+  </servlet>  
   <servlet-mapping>
   	<servlet-name>S3Servlet06</servlet-name>
   	<url-pattern>/s3/servlet06</url-pattern>
@@ -99,8 +93,7 @@
   <servlet>
   	<servlet-name>S4Servlet01</servlet-name>
   	<servlet-class>chap17.servlet4.S4Servlet01</servlet-class>
-  </servlet>
-  
+  </servlet>  
   <servlet-mapping>
   	<servlet-name>S4Servlet01</servlet-name>
   	<!-- <url-pattern>/s4/servlet01</url-pattern> -->
@@ -118,8 +111,7 @@
   <servlet>
   	<servlet-name>S4Servlet02</servlet-name>
   	<servlet-class>chap17.servlet4.S4Servlet02</servlet-class>
-  </servlet>
-  
+  </servlet>  
   <servlet-mapping>
   	<servlet-name>S4Servlet02</servlet-name>
   	<url-pattern>/s4/servlet02/*</url-pattern>
@@ -128,10 +120,56 @@
   <servlet>
   	<servlet-name>S4Servlet03</servlet-name>
   	<servlet-class>chap17.servlet4.S4Servlet03</servlet-class>
-  </servlet>
-  
+  </servlet>  
   <servlet-mapping>
   	<servlet-name>S4Servlet03</servlet-name>
   	<url-pattern>*.action</url-pattern>
   </servlet-mapping>
+  
+  <!-- filters -->
+  
+  <filter>
+  	<filter-name>filter01</filter-name>
+  	<filter-class>chap19.Filter01</filter-class>
+  </filter>  
+  <filter-mapping>
+  	<filter-name>filter01</filter-name>
+  	<url-pattern>/s3/servlet06</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>filter02</filter-name>
+  	<filter-class>chap19.Filter02</filter-class>
+  </filter>  
+  <filter-mapping>
+  	<filter-name>filter02</filter-name>
+  	<url-pattern>/s3/servlet06</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>filter03</filter-name>
+  	<filter-class>chap19.Filter03</filter-class>
+  </filter>  
+  <filter-mapping>
+  	<filter-name>filter03</filter-name>
+  	<url-pattern>/s3/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>filter04</filter-name>
+  	<filter-class>chap19.Filter04</filter-class>
+  </filter>  
+  <filter-mapping>
+  	<filter-name>filter04</filter-name>
+  	<url-pattern>/s5/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>filter05</filter-name>
+  	<filter-class>chap19.Filter05</filter-class>
+  </filter>  
+  <filter-mapping>
+  	<filter-name>filter05</filter-name>
+  	<url-pattern>/s5/memberOnly</url-pattern>
+  </filter-mapping>
 </web-app>
