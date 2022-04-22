@@ -50,10 +50,10 @@ public class S14Servlet05 extends HttpServlet {
 				String city = rs.getString("City");
 				String postCode = rs.getString("PostalCode");
 				
-				customer.setName(name);
+				customer.setCustomerName(name);
 				customer.setCity(city);
 				customer.setCountry(country);
-				customer.setPostCode(postCode);
+				customer.setPostalCode(postCode);
 				
 				request.setAttribute("customer", customer);
 			}			

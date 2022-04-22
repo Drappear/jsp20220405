@@ -11,8 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>${customer.name }은 ${customer.country }, ${customer.city }에 삽니다.</h1>
+	<h1>${customer.customerName }은 ${customer.country }, ${customer.city }에 삽니다.</h1>
 	
-	<h2>우편번호 : ${customer.postCode }</h2>
+	<h2>우편번호 : ${customer.postalCode }</h2>
 </body>
 </html>

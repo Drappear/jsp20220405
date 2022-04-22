@@ -54,10 +54,10 @@ public class S14Servlet11 extends HttpServlet {
 				while (rs.next()) {
 					Customer c = new Customer();
 
-					c.setName(rs.getString(1));
+					c.setCustomerName(rs.getString(1));
 					c.setCountry(rs.getString(2));
 					c.setCity(rs.getString(3));
-					c.setPostCode(rs.getString(4));
+					c.setPostalCode(rs.getString(4));
 
 					list.add(c);
 				}

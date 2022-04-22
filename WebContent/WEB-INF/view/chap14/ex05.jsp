@@ -30,10 +30,10 @@
 						<c:forEach items="${customers }" var="customer" varStatus="status">
 							<tr>
 								<th scope="row">${status.count }</th>
-								<td>${customer.name }</td>
+								<td>${customer.customerName }</td>
 								<td>${customer.city }</td>
 								<td>${customer.country }</td>
-								<td>${customer.postCode }</td>
+								<td>${customer.postalCode }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
