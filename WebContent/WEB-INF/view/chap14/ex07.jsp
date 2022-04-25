@@ -11,34 +11,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<h1>Customers</h1>
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Name</th>
-							<th scope="col">Country</th>
-							<th scope="col">City</th>
-							<th scope="col">Postal Code</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${customers }" var="customer" varStatus="status">
-							<tr>
-								<th scope="row">${status.count }</th>
-								<td>${customer.customerName }</td>
-								<td>${customer.country }</td>
-								<td>${customer.city }</td>
-								<td>${customer.postalCode }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+	<form action="">
+		나라 : <select name="" id="">
+			<c:forEach items="${countryList }" var="country">
+				<option value="${country }">${country }</option>
+			</c:forEach>	
+		</select>	
+		
+		<br />
+		
+		도시 : <select name="" id="">
+			<c:forEach items="${cityList }" var="city">
+				<option value="${city }">${city }</option>
+			</c:forEach>
+		</select>
+	</form>
 </body>
 </html>
