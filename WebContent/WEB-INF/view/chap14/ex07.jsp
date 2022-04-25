@@ -11,8 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="">
-		나라 : <select name="" id="">
+	<form action="S14Servlet13">
+		나라 : <select name="country" id="">
 			<c:forEach items="${countryList }" var="country">
 				<option value="${country }">${country }</option>
 			</c:forEach>	
@@ -20,11 +20,15 @@
 		
 		<br />
 		
-		도시 : <select name="" id="">
+		도시 : <select name="city" id="">
 			<c:forEach items="${cityList }" var="city">
 				<option value="${city }">${city }</option>
 			</c:forEach>
 		</select>
+		
+		<br />
+		
+		<input type="submit" value="조회"/>
 	</form>
 </body>
 </html>
