@@ -68,7 +68,7 @@ public class S14Servlet11 extends HttpServlet {
 		
 		request.setAttribute("customers", list);
 		
-		String path = "/WEB-INF/view/chap14/ex07.jsp";
+		String path = "/WEB-INF/view/chap14/ex05.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
