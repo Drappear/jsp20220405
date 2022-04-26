@@ -92,7 +92,7 @@ public class S14Servlet16 extends HttpServlet {
 			pstmt.setString(3, request.getParameter("birthDate"));
 			pstmt.setString(4, request.getParameter("photo"));
 			pstmt.setString(5, request.getParameter("notes"));
-			pstmt.setString(6, request.getParameter("id"));
+			pstmt.setInt(6, Integer.parseInt(request.getParameter("id")));
 			
 			result = pstmt.executeUpdate();
 			
