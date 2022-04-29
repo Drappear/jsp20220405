@@ -90,4 +90,40 @@ public class BoardDao {
 		
 		return null;
 	}
+
+	public boolean modify(Connection con, BoardDto dto) {
+		String sql = "UPDATE Board "
+				+ "SET title = ?, "
+				+ "		body = ? "
+				+ "WHERE id = ?";
+		
+		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getBody());
+			pstmt.setInt(3, dto.getId());
+			
+			int count = pstmt.executeUpdate();
+			
+			return count == 1;			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean delete(Connection con, int id) {
+		String sql = "DELETE FROM Board WHERE id = ?";
+		
+		try(PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, id);
+			
+			int count = pstmt.executeUpdate();
+			
+			return count == 1;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
