@@ -27,7 +27,6 @@ pageContext.setAttribute("map", map);
 <p>${map.soccer }</p> <%-- 손흥민 --%>
 <p>${map.group }</p> <%-- bts --%>
 <%-- <p>${map.my car }</p> --%>
-
 <hr />
 
 <p>${map["singer"] }</p> <%-- 서태지 --%>

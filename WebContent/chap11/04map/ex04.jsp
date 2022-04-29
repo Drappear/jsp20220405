@@ -35,6 +35,7 @@ pageContext.setAttribute("map", map);
 <p>${map.names[0] }</p>
 <p>${map.names[1] }</p>
 <p>${map.names[2] }</p>
+
 </body>
 </html>
 
