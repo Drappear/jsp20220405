@@ -29,7 +29,29 @@
 			
 				form1.submit();				
 			};
-		});		
+		});	
+		
+		// reply-edit-toggle-button 클릭시 댓글 보여주는 div를 숨기고 수정 form 보여주기
+		$(".reply-edit-toggle-button").click(function() {
+			const replyId = $(this).attr("data-reply-id");
+			const displayDivId = "#replyDisplayContainer" + replyId;
+			const editFormId = "#replyEditFormContainer" + replyId;
+			
+			$(displayDivId).hide();
+			$(editFormId).show();
+		});
+		
+		$(".reply-delete-button").click(function() {
+			const boardId = $(this).attr("data-board-id");
+			const replyId = $(this).attr("data-reply-id");
+			const message = "댓글을 삭제하시겠습니까?";
+					
+			if(confirm(message)) {
+				$("#replyDeleteInput1").val(replyId);
+				$("#replyDeleteInput2").val(boardId);
+				$("#replyDeleteForm1").submit();
+			};
+		});
 	});
 	
 </script>
@@ -57,6 +79,15 @@
 					</c:if>
 				</c:if>
 				
+				<c:if test="${not empty param.refUp }">
+								<c:if test="${param.refUp }">
+									<div class="alert alert-primary">댓글이 수정되었습니다.</div>
+								</c:if>
+								<c:if test="${not param.refUp }">
+									<div class="alert alert-danger">댓글 수정 중 문제가 발생했습니다.</div>
+								</c:if>
+							</c:if>
+				
 				<form id="form1" action="${appRoot }/board/modify" method="post">
 					<input type="hidden" name="id" value="${board.id }" />
 					<div>
@@ -80,6 +111,71 @@
 				</form>
 			</div>
 		</div>
+	</div>
+	
+	<%-- 댓글 --%>
+	<!-- .container.mt-3>.row>.col>form -->
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col">
+				<form action="${appRoot }/reply/insert" method="post">
+					<div class="input-group">
+						<input type="hidden" name="boardId" value="${board.id }"/>
+						<input class="form-control" type="text" name="replyContent" required/>
+						<button class="btn btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<%-- 댓글 목록 --%>
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col">
+				<ul class="list-group">
+					<c:forEach items="${replyList }" var="reply">
+						<li class="list-group-item">
+							<div id="replyDisplayContainer${reply.id }">
+								<div class="fw-bold">
+									<i class="fa-solid fa-comment"></i>
+									${reply.difInserted}
+								</div>
+								
+								: ${reply.content }
+								
+								<button class="reply-edit-toggle-button" id="replyEditToggleButton${reply.id }" data-reply-id="${reply.id }">
+									<i class="fa-solid fa-pen-to-square"></i>
+								</button>
+								
+								<button class="reply-delete-button" data-reply-id="${reply.id}" data-board-id ="${board.id }">
+									<i class="fa-solid fa-trash-can"></i>
+								</button>
+								
+							</div>							
+							<div id="replyEditFormContainer${reply.id }" style="display:none;">
+								<form action="${appRoot }/reply/modify" method="post">
+									<div class="input-group">
+										<input type="hidden" name="boardId" value="${board.id }" />
+										<input type="hidden" name="replyId" value="${reply.id }" />
+										<input class="form-control" type="text" name="replyContent"	required />
+										<button class="btn btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
+									</div>
+								</form>
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<%-- reply 삭제 form --%>
+	<div class="d-none">
+		<form id="replyDeleteForm1" action="${appRoot }/reply/delete" method="post">
+			<input id="replyDeleteInput1" type="text" name="replyId"/>
+			<input id="replyDeleteInput2" type="text" name="boardId"/>
+		</form>
 	</div>
 </body>
 </html>
