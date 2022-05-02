@@ -2,6 +2,7 @@ package app01;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import app01.dao.BoardDao;
+import app01.dao.ReplyDao;
 import app01.dto.BoardDto;
+import app01.dto.ReplyDto;
 
 /**
  * Servlet implementation class BoardGetServlet
@@ -47,9 +50,13 @@ public class BoardGetServlet extends HttpServlet {
 			BoardDao dao = new BoardDao();
 			BoardDto dto = dao.get(con, id);
 			
+			ReplyDao replyDao = new ReplyDao();
+
+			List<ReplyDto> replyList = replyDao.list(con, id);
 			
 			// add attribute
 			request.setAttribute("board", dto);
+			request.setAttribute("replyList", replyList);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
