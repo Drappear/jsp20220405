@@ -7,6 +7,7 @@ public class BoardDto {
 	private String title;
 	private String body;
 	private LocalDateTime inserted;
+	private int numOfReply;
 	
 	public String getdifInserted() {
 		// 24시간 이내면 시간만
@@ -42,5 +43,14 @@ public class BoardDto {
 	}
 	public void setInserted(LocalDateTime inserted) {
 		this.inserted = inserted;	
-	}	
+	}
+
+	public int getNumOfReply() {
+		return numOfReply;
+	}
+
+	public void setNumOfReply(int numOfReply) {
+		this.numOfReply = numOfReply;
+	}
+	
 }
