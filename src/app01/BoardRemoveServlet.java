@@ -2,6 +2,7 @@ package app01;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import app01.dao.BoardDao;
+import app01.dao.ReplyDao;
 
 /**
  * Servlet implementation class BoardRemoveServlet
@@ -51,14 +53,35 @@ public class BoardRemoveServlet extends HttpServlet {
 		int id = Integer.parseInt(idStr);
 		
 		BoardDao dao = new BoardDao();
-		boolean success = false;
+		ReplyDao repDao  = new ReplyDao();
 		
-		try(Connection con = ds.getConnection()){
+		boolean success = false;
+		Connection con = null;
+		try{
+			con = ds.getConnection();
+			con.setAutoCommit(false);
 			
+			repDao.deleteByBoardId(con, id);
 			success = dao.delete(con, id);
 			
+			con.commit();
 		} catch(Exception e) {
 			e.printStackTrace();
+			if(con != null) {
+				try {
+					con.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}				
+			}
+		} finally {
+			if(con != null) {
+				try {
+					con.close();				
+				} catch(Exception e) {
+					e.printStackTrace();
+				}				
+			}
 		}
 		
 		String location = request.getContextPath() + "/board/list";
